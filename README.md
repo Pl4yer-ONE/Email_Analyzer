@@ -14,3 +14,7 @@ Your inbox is a battlefield. This Email Analyzer isn't just another tool—it's 
 Every email tells a story—where it came from, who sent it, and what’s hidden beneath. This tool ensures you stay ahead, whether it’s for security, intelligence, or just staying one step ahead of the game.
 
 🔎 Extract, analyze, act. Stay informed. Stay untouchable.
+
+
+
+note: still on development.
