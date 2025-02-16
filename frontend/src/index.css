@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.email-selector {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.email-list {
+  list-style: none;
+  padding: 0;
+}
+
+.email-item {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+}
+
+.email-item:hover {
+  background-color: #f5f5f5;
+}
+
+.email-subject {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.email-from, .email-date {
+  font-size: 0.9em;
+  color: #666;
+}
+
+@layer components {
+  .email-selector {
+    @apply max-w-4xl mx-auto p-5;
+  }
+
+  .email-list {
+    @apply list-none p-0 space-y-2;
+  }
+
+  .email-item {
+    @apply p-4 border border-gray-200 rounded-lg cursor-pointer
+      transition-all duration-200 hover:shadow-md hover:border-blue-500
+      transform hover:-translate-y-1;
+  }
+
+  .email-subject {
+    @apply font-bold mb-2 text-gray-800;
+  }
+
+  .email-from, .email-date {
+    @apply text-sm text-gray-600;
+  }
+
+  .hover-card {
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+
+  .button-animate {
+    @apply transform transition-all duration-200
+      hover:scale-105 active:scale-95
+      hover:shadow-md active:shadow-sm;
+  }
+}
+
+/* Loading animation */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Focus styles */
+input:focus, textarea:focus {
+  @apply outline-none ring-2 ring-blue-500 ring-opacity-50;
+}
+@layer base {
+  body {
+    @apply antialiased;
+  }
+}
+
+@layer utilities {
+  .animate-glitch {
+    animation: glitch 1s linear infinite;
+  }
+  
+  @keyframes glitch {
+    2%, 64% {
+      transform: translate(2px, 0) skew(0deg);
+    }
+    4%, 60% {
+      transform: translate(-2px, 0) skew(0deg);
+    }
+    62% {
+      transform: translate(0, 0) skew(5deg);
+    }
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-900;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gradient-to-b from-cyan-500 to-purple-500 rounded-full;
+}

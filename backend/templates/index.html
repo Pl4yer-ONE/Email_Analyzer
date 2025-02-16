@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Header Analyzer</title>
+</head>
+<body>
+    <h1>Email Header Analyzer</h1>
+    <form id="emailForm">
+        <textarea id="emailContent" name="emailContent" placeholder="Paste email headers here..." required></textarea>
+        <button type="submit">Analyze</button>
+    </form>
+    <div id="results"></div>
+    <script>
+        document.getElementById('emailForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const emailContent = document.getElementById('emailContent').value;
+            fetch('/analyze', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams({
+                    'emailContent': emailContent
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                const resultsDiv = document.getElementById('results');
+                resultsDiv.innerHTML = '<pre>' + JSON.stringify(data, null, 4) + '</pre>';
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,54 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="bg-gray-100">
+    <ActionBar title="Email Header Analyzer" class="bg-blue-600 text-white" />
+    
+    <ScrollView>
+        <StackLayout class="p-4">
+            <Label text="Email Header Analysis Tool" class="text-2xl font-bold mb-4 text-center" />
+            
+            <Label text="Enter Raw Email Header:" class="text-lg mb-2" />
+            <TextView hint="Paste email header here..." text="{{ rawHeader }}" class="border p-2 rounded-lg mb-4 h-32" />
+            
+            <Button text="Analyze Header" tap="{{ analyzeHeader }}" class="bg-blue-600 text-white p-4 rounded-lg mb-4" />
+            
+            <StackLayout visibility="{{ analysisResult ? 'visible' : 'collapsed' }}" class="bg-white p-4 rounded-lg">
+                <Label text="Analysis Results" class="text-xl font-bold mb-2" />
+                
+                <GridLayout rows="auto, auto, auto, auto, auto" columns="auto, *" class="mb-4">
+                    <Label text="From:" class="font-bold" row="0" col="0" />
+                    <Label text="{{ analysisResult.sender }}" row="0" col="1" textWrap="true" />
+                    
+                    <Label text="Subject:" class="font-bold" row="1" col="0" />
+                    <Label text="{{ analysisResult.subject }}" row="1" col="1" textWrap="true" />
+                    
+                    <Label text="Date:" class="font-bold" row="2" col="0" />
+                    <Label text="{{ analysisResult.date }}" row="2" col="1" textWrap="true" />
+                    
+                    <Label text="Message-ID:" class="font-bold" row="3" col="0" />
+                    <Label text="{{ analysisResult.messageId }}" row="3" col="1" textWrap="true" />
+                </GridLayout>
+                
+                <Label text="Security Checks" class="text-lg font-bold mb-2" />
+                <StackLayout class="mb-4">
+                    <Label text="SPF: {{ analysisResult.spfResult || 'Not available' }}" class="mb-1" />
+                    <Label text="DKIM: {{ analysisResult.dkimResult || 'Not available' }}" class="mb-1" />
+                    <Label text="DMARC: {{ analysisResult.dmarcResult || 'Not available' }}" class="mb-1" />
+                </StackLayout>
+                
+                <Label text="IP Addresses Found" class="text-lg font-bold mb-2" />
+                <ListView items="{{ analysisResult.ipAddresses }}" height="100">
+                    <ListView.itemTemplate>
+                        <Label text="{{ $value }}" class="p-2" />
+                    </ListView.itemTemplate>
+                </ListView>
+            </StackLayout>
+            
+            <Label text="Educational Resources" class="text-xl font-bold mt-4 mb-2" />
+            <StackLayout class="bg-white p-4 rounded-lg">
+                <Label text="• Email headers contain routing and authentication information" textWrap="true" class="mb-2" />
+                <Label text="• SPF verifies if the sender is authorized to send from that domain" textWrap="true" class="mb-2" />
+                <Label text="• DKIM ensures the email wasn't tampered with during transit" textWrap="true" class="mb-2" />
+                <Label text="• DMARC combines SPF and DKIM to prevent email spoofing" textWrap="true" class="mb-2" />
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</Page>
