@@ -17,4 +17,4 @@ Every email tells a story—where it came from, who sent it, and what’s hidden
 
 
 
-note: still on development.
+Note: still on development.
