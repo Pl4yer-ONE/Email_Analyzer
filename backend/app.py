@@ -22,16 +22,16 @@ CORS(app)
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 
-IPAPI_KEY = "b67565f68233930e4c1a600421bc9f26"  # Your ipapi API key
-ABUSEIPDB_API_KEY = "f991dfbb6e66bd8adf5b7ce2afdadf0a6e621fa8e2acfc6325ad66bd264d75f0ba2cd1ee77ddf2dc"  # Your AbuseIPDB API key
+IPAPI_KEY = "your api key"  # Your ipapi API key
+ABUSEIPDB_API_KEY = " "  # Your AbuseIPDB API key
 
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16 MB
 
-ACCESS_TOKEN = 'c5b3647dfb8092'
+ACCESS_TOKEN = ' '
 
 class IPAnalyzer:
     def __init__(self):
-        self.SHODAN_API_KEY = "tmMU1lBKq54IAFLbtUkwbcneNa6lhd7a"
+        self.SHODAN_API_KEY = "  "
         self.logging = logging.getLogger(__name__)
         
     def _is_valid_ip(self, ip):
